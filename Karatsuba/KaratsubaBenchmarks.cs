@@ -12,16 +12,16 @@ namespace Karatsuba
 	[RankColumn]
 	public class KaratsubaBenchmarks
 	{
+		public static readonly Karatsuba karatsuba = new Karatsuba();
 
 		private BigInteger number = BigInteger.Pow(UInt64.MaxValue, 5000);
-
-		public static readonly Karatsuba karatsuba = new Karatsuba();
 
 		[Benchmark]
 		public void karaMultiSmall()
 		{
 			karatsuba.karaMult(123, 123);
 		}
+
 		[Benchmark]
 		public void MultiSmall()
 		{
@@ -31,13 +31,19 @@ namespace Karatsuba
 		[Benchmark]
 		public void karaMultiLarge()
 		{
-			karatsuba.karaMult(number,number );
+			karatsuba.karaMult(number,number);
 		}
+
 		[Benchmark]
 		public void MultiLarge()
 		{
 			karatsuba.multiply(number, number);
 		}
 
+		//[Benchmark]
+		//public void karaMultiArr()
+		//{
+		//	karatsuba.karaMultiplyArr();
+		//}
 	}
 }

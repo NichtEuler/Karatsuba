@@ -1,10 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace Karatsuba
 {
 	public class Karatsuba
 	{
+		List<BigInteger> bigIntList = new List<BigInteger>();
+		public Karatsuba()
+		{
+			Init();
+		}
+
+		private void Init()
+		{
+			for (int i = 0; i < 50; i++)
+			{
+				bigIntList.Add(BigInteger.Pow(UInt64.MaxValue, i * 100));
+			}
+		}
+
 		public BigInteger karaMult(BigInteger x, BigInteger y)
 		{
 			int n = (int)Math.Max(BitLength(x), BitLength(y));
@@ -40,6 +55,21 @@ namespace Karatsuba
 		public BigInteger multiply(BigInteger x, BigInteger y)
 		{
 			return x * y;
+		}
+
+		public List<BigInteger> karaMultiplyArr()
+		{
+			List<BigInteger> karatsubaaaaaa = new List<BigInteger>();
+			foreach (BigInteger x in bigIntList)
+			{
+				foreach (BigInteger y in bigIntList)
+				{
+					karatsubaaaaaa.Add(karaMult(x, y));
+
+				}
+
+			}
+			return karatsubaaaaaa;
 		}
 	}
 }
